@@ -6,6 +6,13 @@ import copy
 from src.utl.load_param import *
 
 def eval_viseme(test_audio_name):
+    """
+    Args:
+        test_audio_name Basename of audio filename
+
+    Returns:
+        Output mayaparam filepath
+    """
 
     def smooth(x, window_len=21, window='hanning'):
 
@@ -96,6 +103,9 @@ def eval_viseme(test_audio_name):
                 nb[active_begin:active_end, i] = nb[active_begin:active_end, i] * rate
             r += 1
 
-    np.savetxt(src + '_viseme.txt',nb, '%.4f')
+    output_filename = src + '_viseme.txt'
+    np.savetxt(output_filename, nb, '%.4f')
 
-    print('Create Viseme parameter in ' + pred_dir + test_audio_name[:-4] + '/mayaparam_viseme.txt')
+    print('Create Viseme parameter in ' + output_filename)
+
+    return output_filename
