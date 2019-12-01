@@ -140,7 +140,8 @@ if __name__ == '__main__':
     # copy .wav to `data/test_audio`(lpw_dir)
     shutil.copy(args.input, lpw_dir)
 
-    test_audio_name = args.input
+    # Need to split directory
+    test_audio_name = os.path.basename(args.input)
 
     # convert audio wav to network input format
     create_dataset_csv(csv_dir, test_audio_name=test_audio_name)
